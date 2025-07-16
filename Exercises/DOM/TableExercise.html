@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .mainContainer{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        color: white;
+    }
+    .mainContainer div{
+        overflow: hidden;
+        background-color: rgb(70, 69, 69);
+        margin: 5px;
+        padding: 10px;
+    }
+    .mainContainer div img{
+        width: 100%;
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+    <div class="mainContainer">
+        <div id="first">
+            <h1>Gaming console</h1>
+            <img src="Screenshot 2025-07-08 192503.png" alt="image">
+            <h2>200$</h2>
+            <form>
+                <input type="text" name="quantity">
+                <button>buy</button>
+            </form>
+        </div>
+        <div id="second">
+            <h1>Mobile phone</h1>
+            <img src="Screenshot 2025-07-08 192503.png" alt="image">
+            <h2>150$</h2>
+            <form>
+                <input type="text" name="quantity">
+                <button>buy</button>
+            </form>
+        </div>
+        <div id="third">
+            <h1>Smart watch</h1>
+            <img src="Screenshot 2025-07-08 192503.png" alt="image">
+            <h2>50$</h2>
+            <form>
+                <input type="text" name="quantity">
+                <button>buy</button>
+            </form>
+        </div>
+        <div id="forth">
+            <h1>Laptop</h1>
+            <img src="Screenshot 2025-07-08 192503.png" alt="image">
+            <h2>525$</h2>
+            <form>
+                <input type="text" name="quantity">
+                <button>buy</button>
+            </form>
+        </div>
+    </div>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>product</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th>total</th>
+            <th>remove</th>
+        </tr>
+        <tbody id="rows"></tbody>
+    </table>
+    <p id="totalId"></p>
+    <script>
+        let table = document.getElementById('rows')
+        let forms = document.getElementsByTagName("form")
+        let allRows = []
+        //getting the elements and adding event
+        for(let singleForm of forms){
+            singleForm.addEventListener('submit',(e)=>{
+                e.preventDefault()
+                let row = {}
+                row["amount"] = singleForm.previousElementSibling.textContent.split("").filter(e=>e!="$").join("")
+                row["product"] = singleForm.parentElement.firstElementChild.textContent
+                row["quantity"] = singleForm.getElementsByTagName("input")[0].value
+                row["total"] = +row["amount"] * +row["quantity"]
+
+                allRows.push(row)
+
+                table.childElementCount != 0?emptyingRows():null
+                
+                addingRow(row)
+                calculatingTotal()
+                
+            })
+        }
+        //adding row on table
+        let addingRow = () => {
+            allRows.forEach((obj,idNumber)=>{
+                let index = allRows.length-1
+                let row = document.createElement("tr")
+                let amount = document.createElement("td")
+                let product = amount.cloneNode(amount)
+                let total = amount.cloneNode(amount)
+                let quantity = amount.cloneNode(amount)
+                let id = amount.cloneNode(amount)
+                let button = document.createElement("button")
+                id.textContent = idNumber +1
+                amount.textContent = obj['amount']
+                product.textContent = obj['product']
+                total.textContent = obj['total']
+                quantity.textContent = obj['quantity']
+                button.textContent = "delete"
+                console.log(index)
+                button.addEventListener("click",()=>{
+                    table.removeChild(row)
+                    allRows.splice(idNumber,1)
+                    console.log(allRows)
+                    calculatingTotal()
+                    emptyingRows()
+                    addingRow()
+                })
+
+                row.append(id,product,amount,quantity,total,button)
+                
+
+
+                table.appendChild(row)
+            })
+        }
+        
+        let calculatingTotal = () =>{
+            let total = 0
+            allRows.forEach(elem=>{
+                total +=Number(elem['total'])
+            })
+            // console.log(total)
+            totalId.textContent ="total: " + total
+        }
+    
+        //emptying table
+        let emptyingRows = ()=>{
+            while(table.childElementCount>0){
+                table.removeChild(table.firstChild)
+            }
+        }
+    </script>
+
+</body>
+</html>
