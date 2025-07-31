@@ -1,9 +1,15 @@
 //splitting the parameter
+
 //mapping through array of all elements
+
 //get first letter of element
+
 //get other letters that remains
+
 //concatenate it from the other letters + first letter + ay
+
 //return it
+
 let pigIt = (word) => {
 
     word = word.split(" ")
@@ -21,7 +27,9 @@ let pigIt = (word) => {
 console.log(pigIt('Pig latin is cool Quis'))
 
 //calculating the length of array
+
 //find the modulus of the second parameter and array length
+
 //moving the number of items that are same as the modulus to the starting point
 
 function rotate(arr,len){
@@ -38,5 +46,12 @@ function rotate(arr,len){
 
 }
 
-console.log(rotate([1, 2, 3, 4, 5], -5))
+// console.log(rotate([1, 2, 3, 4, 5], -5))
+
+
+// console.log("valene".filter(elem=>elem=="e"))
+// console.log('iradukunda valens'.split(" " && ""))
+let arr = ["a","d","u"]
+let regEx = new RegExp(`[${arr.join("")}]`)
+console.log("iradukunda valens".split("").filter(elem=>elem.match(regEx)))
 
