@@ -1,15 +1,30 @@
-let pigIt = (word) => {
+// function newFunction(){
+//     return new Promise((resolve,reject)=>{
+//         reject(new Error("fail"))
+//     })
+// }
+// console.log("hello world")
+// newFunction().then((result)=>{
+//         console.log("data resolved")
+//         console.log(result)
+//         }
+//     ).catch((error)=>{
+//     console.log("data rejected")
+//     console.log(error)
+//     }
+// ).finally(()=>console.log("finish executing"))
 
-    word = word.split(" ")
+// console.log("hello bottom ")
+// console.log("hello world")
+// fetch('https://jsonplaceholder.typicode.com/posts').then(res=>res.json()).then((res)=> console.log(res))
+// console.log("hello bottom ")
 
-    return word.map(elem=>{
-        if(elem == "!"){
-            return elem
-        }
 
-        return elem.slice(1) + elem.slice(0,1) + "ay"
+function displayData(){
+    console.log("hello world")
+    fetch('https://jsonplaceholder.typicode.com/posts').then(res=>res.json()).then((res)=> console.log(res))
+    console.log("hello bottom")
 
-    }).join(" ")
-
+    
 }
-console.log(pigIt('Pig latin is cool Quis'));
+displayData()
