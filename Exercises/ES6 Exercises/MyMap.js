@@ -27,7 +27,7 @@ Array.prototype.filtering = function(callback){
     return arr
 }
 let arr = [1,2,3,4,5,6]
-// console.log(arr.filtering(elem=>elem>3))
+console.log(arr.filtering(elem=>elem>3))
 
 /// Reduce
 
