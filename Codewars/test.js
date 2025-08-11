@@ -27,4 +27,14 @@ function displayData(){
 
     
 }
-displayData()
+// displayData()
+
+function add(a,b){
+    while(b>=0){
+        a = Math.trunc((a*a)/(a-1))
+        b--
+    }
+    return a
+}
+
+console.log(add(10,20))
