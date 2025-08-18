@@ -1,10 +1,5 @@
-function divisors(integer) {
-  let divisors = []
+function squareSum(numbers){
   
-  for(let i = 2; i< integer;i++){
-    if(integer%i == 0){
-      divisors.push(i)
-    }
-  }
-  return divisors.length >0? divisors: `${integer} is prime`
+  return numbers.length>0 ? numbers.reduce((curr,newVal)=>curr + Math.pow(newVal,2),0):0
 }
+console.log(squareSum([2, 1]))
