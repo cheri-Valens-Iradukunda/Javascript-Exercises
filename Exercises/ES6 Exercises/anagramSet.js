@@ -1,6 +1,16 @@
-function anagram(word1, word2){
-    word1 = new Set([...word1])
-    word2 = new Set([...word2])
-    return word1.isSubsetOf(word2) && word2.isSubsetOf(word1)
+
+console.time("object insertion")
+
+let obj = {}
+
+for(let i=1;i<=100000;i++){
+    obj["text"+i] = i
 }
-console.log(anagram("dog", "gode"))
+console.time("end of object insertion")
+console.time("map insertion")
+let map = new Map()
+
+for(let i=1;i<=100000;i++){
+    map.set("item"+i,i)
+}
+console.time("end of map insertion")
