@@ -31,12 +31,3 @@ console.log(arr.filtering(elem=>elem>3))
 
 /// Reduce
 
-Array.prototype.Reduce = function(callback){
-    let value = [];
-
-    for(let i = 0;i <this.length;i++){
-        value.push(callback(this[i],i,this))
-    }
-    return value
-}
-console.log(arr.Reduce((curr,b)=> curr + b))
